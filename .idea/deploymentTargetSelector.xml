@@ -18,6 +18,7 @@
       </SelectionState>
       <SelectionState runConfigName="addapp">
         <option name="selectionMode" value="DROPDOWN" />
+        <DialogSelection />
       </SelectionState>
     </selectionStates>
   </component>
