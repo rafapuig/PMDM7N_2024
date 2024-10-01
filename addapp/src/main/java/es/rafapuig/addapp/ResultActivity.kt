@@ -10,6 +10,15 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class ResultActivity : AppCompatActivity() {
+
+    companion object {
+        val RESULTADO = "es.rafapuig.addapp.ResultActivity.RESULTADO"
+    }
+
+    lateinit var btnOK: Button
+    lateinit var btnCancel: Button
+    lateinit var tvResult: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,24 +29,39 @@ class ResultActivity : AppCompatActivity() {
             insets
         }
 
-        val op1 = intent.getIntExtra("OP1", 0)
-        val op2 = intent.getIntExtra("OP2", 0)
+        initViews()
+        initListeners()
+
+        val op1 = intent.getIntExtra(MainActivity.OP1, 0)
+        val op2 = intent.getIntExtra(MainActivity.OP2, 0)
 
         val suma = op1 + op2
 
-        findViewById<TextView>(R.id.tvResult).text = suma.toString()
-
-
-        findViewById<Button>(R.id.btnOk).setOnClickListener {
-            val intent = Intent()
-            intent.putExtra("RESULTADO", suma)
-            setResult(RESULT_OK, intent)
-            finish()
-        }
-
-        findViewById<Button>(R.id.btnCancel).setOnClickListener {
-            setResult(RESULT_CANCELED)
-            finish()
-        }
+        tvResult.text = suma.toString()
     }
+
+    private fun initViews() {
+        btnOK = findViewById(R.id.btnOk)
+        btnCancel = findViewById(R.id.btnCancel)
+        tvResult = findViewById(R.id.tvResult)
+    }
+
+    private fun initListeners() {
+        btnOK.setOnClickListener { goBack(RESULT_OK) }
+        btnCancel.setOnClickListener { goBack(RESULT_CANCELED) }
+    }
+
+    private fun goBack(resultCode:Int) {
+
+        if(resultCode == RESULT_OK) {
+            val resultado = tvResult.text.toString().toInt()
+
+            Intent().also {
+                it.putExtra(RESULTADO, resultado)
+                setResult(RESULT_OK, it)
+            }
+        }
+        finish()
+    }
+
 }

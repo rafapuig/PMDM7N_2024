@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvSelectedDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Elige un dia de la semana"
+        android:textSize="24sp"
+        android:textColor="#E91E63"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rgWeekdays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedDay"
+        android:layout_marginTop="32dp">
+
+        <RadioButton
+            android:id="@+id/rbLunes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lunes"
+            android:textSize="24sp"
+            />
+
+        <RadioButton
+            android:id="@+id/rbMartes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Martes"
+            android:textSize="24sp"
+            />
+
+        <RadioButton
+            android:id="@+id/rbMiercoles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Miercoles"
+            android:textSize="24sp"
+            />
+
+        <RadioButton
+            android:id="@+id/rbJueves"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jueves"
+            android:textSize="24sp"
+            />
+
+        <RadioButton
+            android:id="@+id/rViernes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Viernes"
+            android:textSize="24sp"
+            />
+
+        <RadioButton
+            android:id="@+id/rbSabado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sabado"
+            android:textSize="24sp"
+            />
+
+        <RadioButton
+            android:id="@+id/rbDomingo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Domingo"
+            android:textSize="24sp"
+            />
+
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "PMDM7N"
 include(":helloapp")
 include(":addapp")
+include(":weekdaysapp")
+include(":kotlin")
