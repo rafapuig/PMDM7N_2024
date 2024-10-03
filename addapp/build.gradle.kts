@@ -7,6 +7,10 @@ android {
     namespace = "es.rafapuig.addapp"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "es.rafapuig.addapp"
         minSdk = 26

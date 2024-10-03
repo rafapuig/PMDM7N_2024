@@ -51,15 +51,14 @@ class ResultActivity : AppCompatActivity() {
         btnCancel.setOnClickListener { goBack(RESULT_CANCELED) }
     }
 
-    private fun goBack(resultCode:Int) {
+    private fun goBack(resultCode: Int) {
 
-        if(resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             val resultado = tvResult.text.toString().toInt()
 
-            Intent().also {
-                it.putExtra(RESULTADO, resultado)
-                setResult(RESULT_OK, it)
-            }
+            val intent = Intent()
+            intent.putExtra(RESULTADO, resultado)
+            setResult(RESULT_OK, intent)
         }
         finish()
     }

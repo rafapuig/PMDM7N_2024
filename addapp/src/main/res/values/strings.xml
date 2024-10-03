@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AddApp</string>
+    <string name="rejected_result">Resultado rechazado</string>
+    <string name="approved_result">Resultado %d aceptado</string>
 </resources>
