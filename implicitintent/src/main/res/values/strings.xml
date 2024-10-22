@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Implicit Intent</string>
+    <string name="take_a_photo">Take a photo</string>
+    <string name="call">Call</string>
+    <string name="insert_a_phone_number">Insert a phone number</string>
+    <string name="call_phone_permission_request">Call Phone Permission Request</string>
+    <string name="the_app_needs_you_allow_to_make_phone_calls">The APP needs you allow to make phone calls</string>
+    <string name="ok">OK</string>
+    <string name="navigate">Navigate</string>
+    <string name="email_address">email address</string>
+    <string name="send_email">Send email</string>
+    <string name="subject">Subject</string>
+</resources>

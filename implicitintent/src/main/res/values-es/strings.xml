@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Implicit Intent</string>
+    <string name="take_a_photo">Hacer fotografía</string>
+    <string name="call">Llamar</string>
+    <string name="insert_a_phone_number">Inserta número de telefono</string>
+    <string name="call_phone_permission_request">Solicitud de permiso de llamadas telefónicas</string>
+    <string name="the_app_needs_you_allow_to_make_phone_calls">Es necesario que permitas hacer llamadas a la aplicación</string>
+    <string name="ok">Aceptar</string>
+    <string name="navigate">Navegar</string>
+    <string name="email_address">dirección de correo electrónico</string>
+    <string name="send_email">Enviar email</string>
+    <string name="subject">Asunto</string>
+</resources>
