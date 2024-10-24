@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">sumarApp</string>
+    <string name="agree_with_the_solution">%1$s agree with the solution %2$s</string>
+</resources>
