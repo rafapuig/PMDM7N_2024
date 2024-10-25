@@ -47,10 +47,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        binding.takePhotoButton.setOnClickListener { onTakingPhoto() }
-        binding.callButton.setOnClickListener { onMakingACall() }
-        binding.navigateButton.setOnClickListener { onNavigatingToURL() }
-        binding.sendEmailButton.setOnClickListener { onSendingEmail() }
+        with(binding) {
+            takePhotoButton.setOnClickListener { onTakingPhoto() }
+            callButton.setOnClickListener { onMakingACall() }
+            navigateButton.setOnClickListener { onNavigatingToURL() }
+            sendEmailButton.setOnClickListener { onSendingEmail() }
+        }
     }
 
     private fun onSendingEmail() {
@@ -63,16 +65,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun composeEmail(addresses: Array<String>, subject: String, message: String) {
         val sendEmail = Intent()
-        sendEmail.action = Intent.ACTION_SENDTO
-        sendEmail.data = Uri.parse("mailto:")
 
-        sendEmail.type = "text/plain"
+        sendEmail.action = Intent.ACTION_SENDTO
+
+        sendEmail.setDataAndType(Uri.parse("mailto:"), "*/*")
 
         sendEmail.putExtra(Intent.EXTRA_EMAIL, addresses)
         sendEmail.putExtra(Intent.EXTRA_SUBJECT, subject)
-        sendEmail.putExtra(Intent.EXTRA_EMAIL, message)
+        sendEmail.putExtra(Intent.EXTRA_TEXT, message)
 
-        if(sendEmail.resolveActivity(packageManager) != null)
+        //if(sendEmail.resolveActivity(packageManager) != null)
             startActivity(sendEmail)
     }
 
