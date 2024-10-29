@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         sendEmail.putExtra(Intent.EXTRA_SUBJECT, subject)
         sendEmail.putExtra(Intent.EXTRA_TEXT, message)
 
-        //if(sendEmail.resolveActivity(packageManager) != null)
+        if(sendEmail.resolveActivity(packageManager) != null)
             startActivity(sendEmail)
     }
 
