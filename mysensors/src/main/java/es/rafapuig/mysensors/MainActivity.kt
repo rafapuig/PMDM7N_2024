@@ -12,14 +12,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import es.rafapuig.mysensors.databinding.ActivityMainBinding
+import java.util.Locale
+
 
 class MainActivity : AppCompatActivity() {
+
+    val TAG = "MisSensores"
 
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var sensorManager: SensorManager
-
-    val TAG = "MisSensores"
 
     private lateinit var sensors: List<Sensor>
 
@@ -39,26 +41,73 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-
-        sensors = sensorManager.getSensorList(Sensor.TYPE_ALL)
+        fillSensorsList()
 
         fillSensorsSpinner()
         initListeners()
     }
 
+    private fun fillSensorsList() {
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+
+        sensors = sensorManager.getSensorList(Sensor.TYPE_ALL)
+    }
+
+    fun fillSpinner() {
+
+        //val names = sensors.map { sensor -> sensor.name }
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sensors)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        binding.sensorsSpinner.adapter = adapter;
+
+    }
+
+    fun initSpinnerListener() {
+        binding.sensorsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                currentSensor = parent?.getItemAtPosition(position) as Sensor
+                //currentSensor = sensors[position]
+                updateUI()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+
+        }
+    }
+
+
     private fun fillSensorsSpinner() {
 
-        val list = sensors.map { sensor -> sensor.name }
 
-        binding.sensorsSpinner.adapter = ArrayAdapter(
+        //val list = sensors.map { sensor -> sensor.name }
+
+        binding.sensorsSpinner.adapter = SensorsListAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            sensors
+        ).also {
+            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+
+        /*ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
             list
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
+            adapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+            )
+        }*/
     }
+
 
     private fun initListeners() {
 
@@ -73,19 +122,37 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     //currentSensor = sensors[position]
 
-                    val sensorName = parent?.getItemAtPosition(position) as String
-                    //parent.adapter.getItem(position)
+                    //val sensorName = parent?.getItemAtPosition(position) as String
 
-                    currentSensor = sensors.firstOrNull { it.name == sensorName }
+                    /* val sensorName = parent?.run {
+                         adapter.getItem(position) as String
+                     }
 
+                     currentSensor = sensors.firstOrNull { sensor ->
+                         sensor.name == sensorName
+                     }*/
 
+                    currentSensor = parent?.getItemAtPosition(position) as Sensor
 
-
+                    updateUI()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
-
             }
 
+    }
+
+    private fun updateUI() {
+
+        with(binding) {
+            currentSensor?.let {
+                sensorType.text = it.stringType
+                sensorVendor.text = it.vendor
+                sensorVersion.text = "${it.version}"
+                sensorResolution.text = getString(R.string.f_units, it.resolution)
+                sensorMaxRange.text = getString(R.string.f_units, it.maximumRange)
+                sensorPower.text = String.format(Locale.getDefault(), "%f mA", it.power)
+            }
+        }
     }
 }

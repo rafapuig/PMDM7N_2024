@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "es.rafapuig.mysensors"
-    compileSdk = 34
+    compileSdk = 35
 
     buildFeatures {
         viewBinding = true

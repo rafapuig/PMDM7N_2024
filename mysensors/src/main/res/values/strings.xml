@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MySensors</string>
+    <string name="sensors">Sensors</string>
+    <string name="power">Power</string>
+    <string name="maximum_range">Maximum range</string>
+    <string name="resolution">Resolution</string>
+    <string name="version">Version</string>
+    <string name="vendor">Vendor</string>
+    <string name="sensor_type">Sensor type</string>
+    <string name="sensor_info">SENSOR INFO</string>
+    <string name="f_units">%f units</string>
+    <string name="power_mA">%f mA</string>
 </resources>
