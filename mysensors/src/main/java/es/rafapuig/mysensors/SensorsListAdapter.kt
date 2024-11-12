@@ -21,9 +21,15 @@ class SensorsListAdapter(
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
-        val view = (convertView ?: LayoutInflater
+        var view = convertView
+
+        if (view !=null) {
+            view = LayoutInflater.from(context).inflate(resource, parent,false)
+        }
+
+       /* val view = (convertView ?: LayoutInflater
             .from(context)
-            .inflate(resource, parent, false))
+            .inflate(resource, parent, false))*/
 
         val textView = view as TextView
 
