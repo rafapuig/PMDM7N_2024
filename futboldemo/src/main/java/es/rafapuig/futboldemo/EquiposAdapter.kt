@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import es.rafapuig.futboldemo.databinding.ItemEquipoBinding
 import es.rafapuig.futboldemo.model.Equipo
 
-class EquiposAdapter(val equipos: List<Equipo>) : RecyclerView.Adapter<EquipoViewHolder>() {
+class EquiposAdapter(private val equipos: List<Equipo>) : RecyclerView.Adapter<EquipoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EquipoViewHolder {
 
@@ -44,7 +45,9 @@ class EquipoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 it.equipoNombre.text = nombre
                 it.equipoEntrenador.text = entrenador
                 it.equipoEstadio.text = estadio
-                it.equipoEscudo.setImageResource(escudo)
+                //it.equipoEscudo.setImageResource(escudo)
+
+                Glide.with(it.equipoEscudo).load("https://github.com/rafapuig/PMDM7N_2024/blob/master/escudos/real_madrid.png?raw=true").into(it.equipoEscudo)
             }
 
         }
