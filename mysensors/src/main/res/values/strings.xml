@@ -10,4 +10,5 @@
     <string name="sensor_info">SENSOR INFO</string>
     <string name="f_units">%f units</string>
     <string name="power_mA">%f mA</string>
+    <string name="unidades">%f %f unidades %f</string>
 </resources>

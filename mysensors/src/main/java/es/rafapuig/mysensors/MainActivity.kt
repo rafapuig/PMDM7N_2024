@@ -55,31 +55,36 @@ class MainActivity : AppCompatActivity() {
 
     fun fillSpinner() {
 
-        //val names = sensors.map { sensor -> sensor.name }
+        val names = sensors.map { sensor -> sensor.name }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sensors)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sensors)
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            names)
 
-        binding.sensorsSpinner.adapter = adapter;
+        adapter.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item)
+
+        binding.sensorsSpinner.adapter = adapter
 
     }
 
     fun initSpinnerListener() {
-        binding.sensorsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.sensorsSpinner
+            .onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                currentSensor = parent?.getItemAtPosition(position) as Sensor
-                //currentSensor = sensors[position]
+                //currentSensor = parent?.getItemAtPosition(position) as Sensor
+                currentSensor = sensors[position]
                 updateUI()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-
         }
     }
 
