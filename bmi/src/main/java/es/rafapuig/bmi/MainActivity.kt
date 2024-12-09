@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    val viewModel: BmiViewModel by viewModels()
+    private val viewModel: BmiViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,14 +36,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initListeners() {
         binding.computeButton.setOnClickListener { onComputeBmi() }
-
-        viewModel.bmi.observe(this) {
-            binding.resultadoNumber.text = String.format(Locale.getDefault(), "%.2f", viewModel.bmi.value)
-            binding.resultadoText.text = getString(viewModel.getResult())
-        }
+        viewModel.bmi.observe(this) { updateUI() }
     }
 
+
     private fun onComputeBmi() {
+
         viewModel.height = binding.estaturaEdit.text.toString().toDoubleOrNull() ?: 0.0
         viewModel.weight = binding.pesoEdit.text.toString().toDoubleOrNull() ?: 0.0
 
@@ -51,5 +49,12 @@ class MainActivity : AppCompatActivity() {
 
         //binding.resultadoNumber.text = String.format(Locale.getDefault(), "%.2f", viewModel.bmi)
         //binding.resultadoText.text = getString(viewModel.getResult())
+    }
+
+    private fun updateUI() {
+        with(binding) {
+            resultadoNumber.text = String.format(Locale.getDefault(), "%.2f", viewModel.bmi.value)
+            resultadoText.text = getString(viewModel.getResult())
+        }
     }
 }
