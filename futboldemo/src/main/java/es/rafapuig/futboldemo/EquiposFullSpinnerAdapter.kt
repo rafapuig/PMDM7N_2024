@@ -8,7 +8,7 @@ import android.widget.TextView
 import es.rafapuig.futboldemo.databinding.SimpleItemEquipoBinding
 import es.rafapuig.futboldemo.model.Equipo
 
-class EquiposFullSpinnerAdapter(context: Context, val equipos: List<Equipo>) :
+class EquiposFullSpinnerAdapter(context: Context, private val equipos: List<Equipo>) :
     EquiposSpinnerAdapter(context, 0, equipos) {
 
 

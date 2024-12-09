@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/addapp" />
+            <option value="$PROJECT_DIR$/bmi" />
             <option value="$PROJECT_DIR$/calculadora" />
             <option value="$PROJECT_DIR$/futboldemo" />
             <option value="$PROJECT_DIR$/helloapp" />

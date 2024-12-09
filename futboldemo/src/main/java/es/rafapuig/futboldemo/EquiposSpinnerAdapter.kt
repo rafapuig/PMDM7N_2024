@@ -37,6 +37,12 @@ open class EquiposSpinnerAdapter(
         mDropDownResourceId = resource
     }
 
+
+    /*fun getView(position: Int, convertView: View?, parent: ViewGroup, @LayoutRes resource: Int): View {
+        return null
+    }*/
+
+
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         val view = convertView ?: LayoutInflater.from(context).inflate(
